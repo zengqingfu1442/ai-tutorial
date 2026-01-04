@@ -1,12 +1,12 @@
 # Claude Code和Codex安装、配置以及使用教程
 
-# 获取api-key
+# 1、获取api-key
 1. 登陆https://lezd.cn/user/profile
 2. 点击生成api-key
 ![generate-api-key](image.png)
 
-# 配置环境变量
-## Linux(Ubuntu 20.04+/Debian 10+)
+# 2、配置环境变量
+## 2.1 Linux(Ubuntu 20.04+/Debian 10+)
 将以下环境变量添加到~/.bashrc里面(以下操作步骤在Ubuntu 24.04上验证过)
 执行vim ~/.bashrc，在文件的最后，添加以下内容：
 ```bash
@@ -25,7 +25,7 @@ claude-sonnet-4-5-20250929
 ```
 
 
-## macOS 10.15+
+## 2.2 macOS 10.15+
 Mac默认用zsh，如果你的Mac用的其他的shell，请换成其他文件
 执行vim ~/.zshrc，在文件的最后，添加以下内容：
 ```bash
@@ -40,9 +40,9 @@ export V_API_KEY="your api key"
 ```
 
 
-# 安装Claude Code以及Codex
-## 安装nodejs
-### 方法一
+# 3. 安装Claude Code以及Codex
+## 3.1 安装nodejs
+### 3.1.1 方法一
 参考教程：https://nodejs.org/zh-cn/download/current
 ```bash
 # 下载并安装 nvm：
@@ -61,7 +61,7 @@ node -v # Should print "v25.2.1".
 npm -v # Should print "11.6.2".
 ```
 
-### 方法二
+### 3.1.2 方法二
 ```
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
 sudo apt-get install -y nodejs
@@ -69,7 +69,7 @@ node --version
 npm --version
 ```
 
-## 安装 Claude Code 和 Codex
+## 3.2 安装 Claude Code 和 Codex
 安装Claude Code
 ```bash
 npm install -g @anthropic-ai/claude-code
@@ -85,18 +85,23 @@ npm i -g @openai/codex
 codex --version
 ```
 
-# 在vscode里面安装Claude Code和 Codex 插件
+# 4. 在vscode里面安装Claude Code和 Codex 插件
 claude code插件安装参考文档：https://code.claude.com/docs/en/vs-code#install-the-extension
-1. 安装claude code插件
+
+## 4.1 安装claude code插件
+
 ![vscode-claude-code-extension](image-2.png)
-2. Disable Claude Code登陆提示
+
+## 4.2 Disable Claude Code登陆提示
+
 ![关闭claude code登陆提示](image-3.png)
-3. 重启vscode(为了加载第2步中配置的环境变量，如果是在配置好环境变量后新启动的vscode，则不必重启）
+
+## 4.3 重启vscode(可选。为了加载第2步中配置的环境变量，如果是在配置好环境变量后新启动的vscode，则不必重启）
 
 
 
-# Claude Code使用
-## 直接在命令行使用
+# 5. Claude Code使用
+## 5.1 直接在命令行使用
 ```bash
 claude
 ```
@@ -105,17 +110,17 @@ claude
 <video controls src="录屏 2026-01-03 22-04-12.webm" title="Title"></video>
 
 
-## 在vscode里面使用
+## 5.2 在vscode里面使用
 ![alt text](image-1.png)
 
 使用Claude Code生成贪吃蛇游戏代码，参考视频：
 
 <video controls src="录屏 2026-01-04 14-34-21.webm" title="Title"></video>
 
-# Codex 使用
+# 6. Codex 使用
 !!! Codex 目前只支持在命令行里面使用
 
-## 配置Codex
+## 6.1 配置Codex
 codex配置文件config.toml
 ```bash
 mkdir -p ~/.codex
@@ -146,7 +151,7 @@ approval_policy = "on-request"      # 需要时再询问是否执行
 sandbox_mode = "workspace-write"    # 允许在当前工程写文件，依旧禁网
 ```
 
-## 直接在命令行使用
+## 6.2 直接在命令行使用
 ```bash
 codex
 ```

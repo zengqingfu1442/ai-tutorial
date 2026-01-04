@@ -1,0 +1,140 @@
+<h1 id="claude-code和codex安装配置以及使用教程">Claude
+Code和Codex安装、配置以及使用教程</h1>
+<h1 id="获取api-key">1、获取api-key</h1>
+<ol type="1">
+<li>登陆https://lezd.cn/user/profile</li>
+<li>点击生成api-key <img src="image.png" alt="generate-api-key" /></li>
+</ol>
+<h1 id="配置环境变量">2、配置环境变量</h1>
+<h2 id="linuxubuntu-20.04debian-10">2.1 Linux(Ubuntu 20.04+/Debian
+10+)</h2>
+<p>将以下环境变量添加到~/.bashrc里面(以下操作步骤在Ubuntu 24.04上验证过)
+执行vim ~/.bashrc，在文件的最后，添加以下内容：</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># claude code cli and vscode claude-code extension</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ANTHROPIC_MODEL</span><span class="op">=</span><span class="st">&quot;claude-sonnet-4-5-20250929&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ANTHROPIC_SMALL_FAST_MODEL</span><span class="op">=</span><span class="st">&quot;claude-sonnet-4-5-20250929&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ANTHROPIC_BASE_URL</span><span class="op">=</span><span class="st">&quot;https://www.lezd.cn:48080/basic&quot;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ANTHROPIC_AUTH_TOKEN</span><span class="op">=</span><span class="st">&quot;your api key&quot;</span></span></code></pre></div>
+<p>其中claude模型名称可选择下面中的一个：</p>
+<pre><code>claude-haiku-4-5-20251001
+claude-opus-4-1-20250805
+claude-opus-4-5-20251101
+claude-sonnet-4-5-20250929</code></pre>
+<h2 id="macos-10.15">2.2 macOS 10.15+</h2>
+<p>Mac默认用zsh，如果你的Mac用的其他的shell，请换成其他文件 执行vim
+~/.zshrc，在文件的最后，添加以下内容：</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># claude code cli and vscode claude-code extension</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ANTHROPIC_MODEL</span><span class="op">=</span><span class="st">&quot;claude-sonnet-4-5-20250929&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ANTHROPIC_SMALL_FAST_MODEL</span><span class="op">=</span><span class="st">&quot;claude-sonnet-4-5-20250929&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ANTHROPIC_BASE_URL</span><span class="op">=</span><span class="st">&quot;https://www.lezd.cn:48080/basic&quot;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ANTHROPIC_AUTH_TOKEN</span><span class="op">=</span><span class="st">&quot;your api key&quot;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># for codex cli</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">V_API_KEY</span><span class="op">=</span><span class="st">&quot;your api key&quot;</span></span></code></pre></div>
+<h1 id="安装claude-code以及codex">3. 安装Claude Code以及Codex</h1>
+<h2 id="安装nodejs">3.1 安装nodejs</h2>
+<h3 id="方法一">3.1.1 方法一</h3>
+<p>参考教程：https://nodejs.org/zh-cn/download/current</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 下载并安装 nvm：</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-o-</span> https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 代替重启 shell</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">\.</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/.nvm/nvm.sh&quot;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 下载并安装 Node.js：</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">nvm</span> install 25</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 验证 Node.js 版本：</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ex">node</span> <span class="at">-v</span> <span class="co"># Should print &quot;v25.2.1&quot;.</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 验证 npm 版本：</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> <span class="at">-v</span> <span class="co"># Should print &quot;11.6.2&quot;.</span></span></code></pre></div>
+<h3 id="方法二">3.1.2 方法二</h3>
+<pre><code>curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
+sudo apt-get install -y nodejs
+node --version
+npm --version</code></pre>
+<h2 id="安装-claude-code-和-codex">3.2 安装 Claude Code 和 Codex</h2>
+<p>安装Claude Code</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> @anthropic-ai/claude-code</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span> <span class="at">--version</span></span></code></pre></div>
+<p>安装Codex</p>
+<pre><code>npm i -g @openai/codex
+
+# 或在有时需要的原生包名：
+# npm i -g @openai/codex@native
+
+codex --version</code></pre>
+<h1 id="在vscode里面安装claude-code和-codex-插件">4.
+在vscode里面安装Claude Code和 Codex 插件</h1>
+<p>claude
+code插件安装参考文档：https://code.claude.com/docs/en/vs-code#install-the-extension</p>
+<h2 id="安装claude-code插件">4.1 安装claude code插件</h2>
+<figure>
+<img src="image-2.png" alt="vscode-claude-code-extension" />
+<figcaption aria-hidden="true">vscode-claude-code-extension</figcaption>
+</figure>
+<h2 id="disable-claude-code登陆提示">4.2 Disable Claude
+Code登陆提示</h2>
+<figure>
+<img src="image-3.png" alt="关闭claude code登陆提示" />
+<figcaption aria-hidden="true">关闭claude code登陆提示</figcaption>
+</figure>
+<h2
+id="重启vscode可选为了加载第2步中配置的环境变量如果是在配置好环境变量后新启动的vscode则不必重启">4.3
+重启vscode(可选。为了加载第2步中配置的环境变量，如果是在配置好环境变量后新启动的vscode，则不必重启）</h2>
+<h1 id="claude-code使用">5. Claude Code使用</h1>
+<h2 id="直接在命令行使用">5.1 直接在命令行使用</h2>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div>
+<p>参考视频：</p>
+<video controls src="录屏 2026-01-03 22-04-12.webm" title="Title">
+</video>
+<h2 id="在vscode里面使用">5.2 在vscode里面使用</h2>
+<figure>
+<img src="image-1.png" alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>使用Claude Code生成贪吃蛇游戏代码，参考视频：</p>
+<video controls src="录屏 2026-01-04 14-34-21.webm" title="Title">
+</video>
+<h1 id="codex-使用">6. Codex 使用</h1>
+<p>!!! Codex 目前只支持在命令行里面使用</p>
+<h2 id="配置codex">6.1 配置Codex</h2>
+<p>codex配置文件config.toml</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.codex</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> ~/.codex/config.toml</span></code></pre></div>
+<p>在config.toml中加入如下配置，根据需求修改：</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">model_provider</span> = <span class="st">&quot;vapi&quot;</span>  <span class="co"># 设置API供应商</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">model</span> = <span class="st">&quot;gpt-5.1&quot;</span>        <span class="co"># 填写支持codex的模型即可</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">model_reasoning_effort</span> = <span class="st">&quot;low&quot;</span> <span class="co"># 思考级别 low medium（默认） high minimal，不需要可以#注释掉</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 供应商设置</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[model_providers.vapi]</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="ex">name</span> = <span class="st">&quot;VAPI&quot;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ex">base_url</span> = <span class="st">&quot;https://www.lezd.cn:48080/basic/v1&quot;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="ex">env_key</span> = <span class="st">&quot;V_API_KEY&quot;</span>    <span class="co"># 保留这个值，不需要替换为apikey</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ex">wire_api</span> = <span class="st">&quot;chat&quot;</span> <span class="co"># 使用 /v1/chat/completions 协议</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="ex">query_params</span> = {}</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ex">request_max_retries</span> = 4            <span class="co"># 失败最大重试次数</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="ex">stream_max_retries</span> = 10            <span class="co"># 流中断后最大重试次数</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 可选：定义一个 profile，便于命令行快速切换</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="ex">[profiles.vapi]</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="ex">model_provider</span> = <span class="st">&quot;vapi&quot;</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="ex">model</span> = <span class="st">&quot;gpt-5.1&quot;</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="ex">approval_policy</span> = <span class="st">&quot;on-request&quot;</span>      <span class="co"># 需要时再询问是否执行</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="ex">sandbox_mode</span> = <span class="st">&quot;workspace-write&quot;</span>    <span class="co"># 允许在当前工程写文件，依旧禁网</span></span></code></pre></div>
+<h2 id="直接在命令行使用-1">6.2 直接在命令行使用</h2>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">codex</span></span></code></pre></div>
+<figure>
+<img src="image-4.png" alt="codex-cli" />
+<figcaption aria-hidden="true">codex-cli</figcaption>
+</figure>
