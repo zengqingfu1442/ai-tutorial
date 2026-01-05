@@ -39,6 +39,32 @@ export ANTHROPIC_AUTH_TOKEN="your api key"
 export V_API_KEY="your api key"
 ```
 
+## 2.3 Windows 10+
+将获取的api key设置成Windows的环境变量。
+
+需要设置的环境变量：
+
+Claude Code配置：
+变量名：ANTHROPIC_BASE_URL
+变量值：https://www.lezd.cn:48080/basic
+变量名：ANTHROPIC_API_KEY
+变量值：你的密钥
+变量名：ANTHROPIC_AUTH_TOKEN
+变量值：你的密钥
+
+OpenAI Codex配置（可选）：
+变量名：OPENAI_BASE_URL
+变量值：https://api.code-relay.com/v1
+变量名：OPENAI_API_KEY
+变量值：你的密钥
+变量名：CODEX_API_KEY
+变量值：你的密钥
+
+设置方法：
+1. 右键"此电脑" → "属性" → "高级系统设置" → "环境变量"
+2. 在"系统变量"区域点击"新建"
+3. 分别添加上述三个变量
+4. 点击"确定"保存所有更改
 
 # 3. 安装Claude Code以及Codex
 ## 3.1 安装nodejs
@@ -67,6 +93,17 @@ curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
 sudo apt-get install -y nodejs
 node --version
 npm --version
+```
+
+### 3.1.3 方法三 Windows系统下
+请访问 https://nodejs.org/zh-cn/download 下载LTS版本（推荐）
+
+![windos-nodejs-install](image-5.png)
+
+在开始菜单搜索 "PowerShell" 或按 Win+X 选择 "Windows PowerShell"，验证以下命令安装情况：
+```powershell
+node -v
+npm -v
 ```
 
 ## 3.2 安装 Claude Code 和 Codex
